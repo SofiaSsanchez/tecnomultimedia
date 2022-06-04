@@ -1,17 +1,30 @@
-int cant = 10;
-boolean centro = false;
-int tam;
-int tamfinal;
+int i=0;
+float mov=0;
 
 void setup() {
-  size(400, 400);
-  rectMode(CENTER);
+  size(800, 800);
+  rectMode(RADIUS);
+  frameRate(20);
+  noStroke ();
+  textMode (CENTER);
+  textSize(30);
+  background (0);
+  armarCuadrados ();
 }
 
 void draw () {
-  armarCuadrados1 ();
-  estaEnElCentro ();
-  if (centro) {
-    sico();
+  if (keyPressed) {
+    if (key == 'f' || key == 'F') {
+      loco ();
+    }
+  }
+
+
+  if (keyPressed) {
+    if (key == 'r' || key == 'R') {
+      i = 0;
+      mov = 0;
+      armarCuadrados ();
+    }
   }
 }
