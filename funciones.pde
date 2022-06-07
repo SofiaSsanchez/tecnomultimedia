@@ -1,38 +1,98 @@
-void armarCuadrados () {
-  background (0);
-  for (i=0; i < 40; i++) {
-    if (i % 2 == 0) {
-      fill (0);
+void cuadricula () {
+  for (int k=0; k<cant; k++) {
+    rect(0, tamY*k, tamX, tamY);
+    if (mousePressed) {
+      mousepres2 (k, mouseX, mouseY);
     } else {
-      fill (255);
+      primero(k);
     }
-    float radio = (width/3) - i*6.8;
-    rect (width/2, height/2, radio, radio);
+    if (k%2 == 0) {
+      for (i=0; i<cant; i++) {
+        rect(i*tamX + 30, tamY*k, tamX, tamY);
+        if (mousePressed) {
+          mousepres1 (k, i, mouseX, mouseY);
+        } else {
+          relleno (i, k);
+        }
+      }
+    } else { 
+      for (i = 0; i<cant; i++) {
+        rect(i*tamX, tamY*k, tamX, tamY);
+        if (mousePressed) {
+          mousepres1 (k, i, mouseX, mouseY);
+        } else {
+          relleno (i, k);
+        }
+      }
+    }
   }
-  text ("Presione F para comenzar.", width/2 - 20, 40);
-  text ("Presione R para reiniciar.", width/2 - 20, 80);
 }
 
-void loco() {
-  float incrementoMov = 0.05;
-  translate (width/2, height/2);
-  background (0);
-  for (i=0; i < 40; i++) {
-    if (mov < 800) {
-      rotate (map (mov, 0, width, PI/2, PI/80));
-      translate (0, map (mov, 0, width, PI/2, PI/80));
-      mov = mov + incrementoMov;
-    }
-    if (i % 2 == 0) {
-      fill (0);
-    } else {
+
+void relleno (int i, int j) {
+  if (i%2 == 0) {
+    if (j%2 == 0) {
       fill (255);
+    } else {
+      fill (0);
     }
-    float radio = (width/3) - i*6.8;
-    rect (0, 0, radio, radio);
   }
-  if (mov > 800 && i == 40) {
-    i=0;
-    mov=0;
+  if (i%2 != 0) {
+    if (j%2 != 0) {
+      fill (255);
+    } else {
+      fill (0);
+    }
+  }
+}
+
+
+
+void primero (int i) {
+  if (i%2 == 0) {
+    fill (255);
+  } else {
+    fill (0);
+  }
+  if (i%2 != 0) {
+    fill (255);
+  } else {
+    fill (0);
+  }
+}
+
+
+void mousepres1 (int i, int j, int posX, int posY) { 
+  float color1 = map (posX, 0, width, 0, 100);
+  float color2 = map (posY, 0, width, 150, 255);
+  if (i%2 == 0) {
+    if (j%2 == 0) {
+      fill (color2, color2, color2);
+    } else {
+      fill (color1, color1, color1);
+    }
+  }
+  if (i%2 != 0) {
+    if (j%2 != 0) {
+      fill (color2, color2, color2);
+    } else {
+      fill (color1, color1, color1);
+    }
+  }
+}
+
+
+void mousepres2 (int i, int posX, int posY) {
+  float color1 = map (posX, 0, width, 0, 100);
+  float color2 = map (posY, 0, width, 150, 255);
+  if (i%2 == 0) {
+    fill (color2, color2, color2);
+  } else {
+    fill (color1, color1, color1);
+  }
+  if (i%2 != 0) {
+    fill (color2, color2, color2);
+  } else {
+    fill (color1, color1, color1);
   }
 }
