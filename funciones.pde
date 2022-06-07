@@ -8,7 +8,7 @@ void cuadricula () {
     }
     if (k%2 == 0) {
       for (i=0; i<cant; i++) {
-        rect(i*tamX + 30, tamY*k, tamX, tamY);
+        rect(i*tamX + 20, tamY*k, tamX, tamY);
         if (mousePressed) {
           mousepres1 (k, i, mouseX, mouseY);
         } else {
