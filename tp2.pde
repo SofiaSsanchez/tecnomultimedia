@@ -1,5 +1,8 @@
 // https://youtu.be/yVg9WqjcPdQ
 
+//GUIA: Presionar "a" o "A" para realizar efecto.
+// Presionar "r" o "R" para reiniciar.
+
 int cant = 20;
 int tamX, tamY;
 float linea;
