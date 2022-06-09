@@ -1,35 +1,26 @@
 void cuadricula () {
   for (int k=0; k<cant; k++) {
+    fill (0);
     rect(0, tamY*k, tamX, tamY);
-    if (mousePressed) {
-      mousepres2 (k, mouseX, mouseY);
-    } else {
-      primero(k);
-    }
+    primero(k);
     if (k%2 == 0) {
-      for (i=0; i<cant; i++) {
+      for (int i = 0; i<cant; i++) {
+        relleno (i, k);
         rect(i*tamX + 20, tamY*k, tamX, tamY);
-        if (mousePressed) {
-          mousepres1 (k, i, mouseX, mouseY);
-        } else {
-          relleno (i, k);
-        }
+        dibujarLineas (i);
       }
     } else { 
-      for (i = 0; i<cant; i++) {
-        rect(i*tamX, tamY*k, tamX, tamY);
-        if (mousePressed) {
-          mousepres1 (k, i, mouseX, mouseY);
-        } else {
-          relleno (i, k);
-        }
+      for (int i = 0; i<cant; i++) {
+       relleno (i, k);
+       rect(i*tamX, tamY*k, tamX, tamY);
+        dibujarLineas (i);
       }
     }
   }
 }
 
-
 void relleno (int i, int j) {
+
   if (i%2 == 0) {
     if (j%2 == 0) {
       fill (255);
@@ -62,37 +53,19 @@ void primero (int i) {
 }
 
 
-void mousepres1 (int i, int j, int posX, int posY) { 
-  float color1 = map (posX, 0, width, 0, 100);
-  float color2 = map (posY, 0, width, 150, 255);
-  if (i%2 == 0) {
-    if (j%2 == 0) {
-      fill (color2, color2, color2);
-    } else {
-      fill (color1, color1, color1);
-    }
-  }
-  if (i%2 != 0) {
-    if (j%2 != 0) {
-      fill (color2, color2, color2);
-    } else {
-      fill (color1, color1, color1);
-    }
-  }
+void dibujarLineas (int i) {
+  stroke (90, 88, 88);
+  strokeWeight (linea);
+  line (0, tamY*i, width, tamY*i);
 }
 
 
-void mousepres2 (int i, int posX, int posY) {
-  float color1 = map (posX, 0, width, 0, 100);
-  float color2 = map (posY, 0, width, 150, 255);
-  if (i%2 == 0) {
-    fill (color2, color2, color2);
-  } else {
-    fill (color1, color1, color1);
+void keyPressed () { 
+  float grosor = random (1.5, 4.5);
+  if (key == 'a' || key == 'A') {
+    linea = grosor;
   }
-  if (i%2 != 0) {
-    fill (color2, color2, color2);
-  } else {
-    fill (color1, color1, color1);
+  if (key == 'r' || key == 'R'){
+    linea = 1;
   }
 }
