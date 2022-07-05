@@ -20,7 +20,6 @@ void setup () {
 }
 
 void draw () {
-  //personaje y cuadricula
   background (0);
   noStroke ();
   for (int i=0; i<cantidad; i++) {
@@ -36,7 +35,6 @@ void draw () {
     }
   }
 
-  //obstaculo
   fill (255);
   if (posX <= width + 50) {
     rect (posX, 50, 100, 50);
