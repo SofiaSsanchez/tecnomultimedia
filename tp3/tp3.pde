@@ -1,3 +1,5 @@
+//https://youtu.be/YCWHSxbdtqo
+
 int conteo; //pantallas
 
 //imagenes basicas
